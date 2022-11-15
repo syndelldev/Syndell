@@ -44,28 +44,28 @@ function MyComponent() {
   
       return (
         <>
-  <div className="container">
+        <div className="container">
           <div className="slider-section">
-          <Slider {...settings}>
-              {(slider).map(s_data => (
-                <div className="slider_content">
-                {console.log(s_data)}
-  
-                  <div className='slider_text'>
-                    <h2 className='slider_title'> {s_data.slider_title} </h2>
-                    <a href='/contact-us' className='slider_button'>Get a Proposal</a>
+            <Slider {...settings}>
+                {(slider).map(s_data => (
+                  <div className="slider_content">
+                  {console.log(s_data)}
+    
+                    <div className='slider_text'>
+                      <h2 className='slider_title'> {s_data.slider_title} </h2>
+                      <a href='/contact-us' className='slider_button'>Get a Proposal</a>
+                    </div>
+    
+                    <div className='slider_img'>
+                      <img src={s_data.slider_image.url} alt="Slider" />
+                    </div>
+    
                   </div>
-  
-                  <div className='slider_img'>
-                    <img src={s_data.slider_image.url} alt="Slider" />
-                  </div>
-  
-                </div>
-              ))}
-          </Slider>
+                ))}
+            </Slider>
           </div>
 
-          </div>  
+        </div>  
         </>
       );
     }

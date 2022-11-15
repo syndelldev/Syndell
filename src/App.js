@@ -4,7 +4,6 @@ import Contact from './contact-us';
 import Home from './home';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-
 class App extends Component {
   render() {
     return (
