@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
 import Contact from './contact-us';
 import Home from './home';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 
 class App extends Component {
   render() {
