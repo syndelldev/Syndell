@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
+import Contact from './contact-us';
 import Home from './home';
 
 class App extends Component {
@@ -10,12 +11,14 @@ class App extends Component {
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
               <ul className="navbar-nav mr-auto">
                 <li><Link to={'/'} className="nav-link">Home</Link></li>
+                <li><Link to={'/contact-us'} className="nav-link">Contact Us</Link></li>
               </ul>
             </nav>
 
             <hr />
           <Routes>
             <Route path='/' element={<Home/>} />
+            <Route path='/contact-us' element={<Contact/>} />
           </Routes>
 
         </div>

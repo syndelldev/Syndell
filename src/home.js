@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import './App.css';
 
 function MyComponent() {
   const [error, setError] = useState(null);
@@ -31,16 +31,25 @@ function MyComponent() {
   } else {
 
     var slider = data.acf.slider;
+
     return (
       <>
 
-        <div>
-            {(slider).map(item => (
-              <>
-              {console.log(item)}
-                <h2> {item.slider_title} </h2>
-                <img src={item.slider_image.url} alt="Slider"/>
-              </>
+        <div className="slider-section">
+            {(slider).map(s_data => (
+              <div className="slider_content">
+              {console.log(s_data)}
+
+                <div className='slider_text'>
+                  <h2 className='slider_title'> {s_data.slider_title} </h2>
+                  <a href='/contact-us' className='slider_button'>Get a Proposal</a>
+                </div>
+
+                <div className='slider_img'>
+                  <img src={s_data.slider_image.url} alt="Slider" />
+                </div>
+
+              </div>
             ))}
         </div>
 
