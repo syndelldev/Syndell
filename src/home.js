@@ -1,48 +1,52 @@
 import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 
-function Home() {
-
-  const [data, setData] = useState();
-
-  // useEffect(() => {
-  //   fetch('https://syndelltech.com/wp-json/acf/v3/home-reactjs')
-  //   .then(response => response.json())
-  //   .then(json => setData(json))
-  // }, []);
-
-  // axios.get(`https://syndelltech.com/wp-json/acf/v3/home-reactjs`)
-  //   .then(res => {
-  //   const users = res.data;
-  //   setData(users);
-  // });
-
-  const fetchData = () => {
-    return fetch("https://jsonplaceholder.typicode.com/users")
-          .then((response) => response.json())
-          .then((data) => setData(data));
-  }
+function MyComponent() {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetchData();
-  },[])
+    fetch("https://syndelltech.com/wp-json/acf/v3/home-reactjs")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
 
-  return (
-      <div>
-        <h2>Home</h2>
 
-        {console.log("1", data)}
+  var data = items[0];
 
-        {data.map((d)=>{
-          return(
-          <>
-            <h6>{d.userId}</h6>
-          </>
-          )
-        })}
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
 
-      </div>
-  );
+    var slider = data.acf.slider;
+    return (
+      <>
+
+        <div>
+            {(slider).map(item => (
+              <>
+              {console.log(item)}
+                <h2> {item.slider_title} </h2>
+                <img src={item.slider_image.url} alt="Slider"/>
+              </>
+            ))}
+        </div>
+
+      </>
+    );
+  }
 }
 
-export default Home;
+export default MyComponent;
