@@ -24,13 +24,21 @@ function MyComponent() {
         )
     }, [])
   
-    var settings = {
+    var slider_settings = {
         dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1
     };
+    var settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 6,
+      slidesToScroll: 1
+  };
+
     
     var data = items[0];
   
@@ -41,12 +49,13 @@ function MyComponent() {
     } else {
   
       var slider = data.acf.slider;
+      var trusted_clients = data.acf.trusted_clients_slider;
   
       return (
         <>
         <div className="container">
           <div className="slider-section">
-            <Slider {...settings}>
+            <Slider {...slider_settings}>
                 {(slider).map(s_data => (
 
                   <div className="slider_content">
@@ -75,6 +84,34 @@ function MyComponent() {
                 ))}
             </Slider>
           </div>
+
+
+          <div className='trustedClient_Section'>
+            <div>
+              <h2 className='trustedClient_heading'>Trusted by 500+ Clients across the globe for 8+ years</h2>
+            </div>
+
+            <div className='trustedClient_slider'>
+              <Slider {...settings}>
+                  {(trusted_clients).map(t_data => (
+
+                    <div className="slider_content">
+                    {console.log(t_data)}
+
+                      <div className='slider_img'>
+                        <div>
+                          <img src={t_data.url} alt="Slider" />
+                        </div>
+                      </div>
+
+                    </div>
+                  ))}
+              </Slider>
+
+            </div>
+          </div>
+
+
 
         </div>  
         </>
